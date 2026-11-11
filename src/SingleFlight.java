@@ -58,7 +58,7 @@ public class SingleFlight<K, V>{
                 } catch (Exception e) {
                     newFuture.completeExceptionally(e);
                 } finally {
-                    inFlight.remove(k);
+                    inFlight.remove(k); //remove the current execution, future executions call the loader in the fresh state
                 }
             });
             return newFuture;
